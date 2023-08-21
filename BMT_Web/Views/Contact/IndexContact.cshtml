@@ -1,0 +1,51 @@
+﻿@model IEnumerable<BMT_Web.Models.Dto.ContactDTO>
+<br />
+<div class="container p-4 border">
+    <div class="row pb-2">
+        <div class="col">
+            <h3 class="text-primary">Contact List</h3>
+        </div>
+        <div class="col text-end pt-1">
+            <a asp-controller="Contact" asp-action="CreateContact" class="btn btn-outline-primary"><i class="bi bi-plus-square-fill"></i> Create New Contact</a>
+        </div>
+    </div>
+
+    <table class="table">
+		<thead>
+			<tr>
+				<th>
+					Firstname
+				</th>
+				<th>
+					Lastname
+				</th>
+				<th>
+					Company Name
+				</th>
+				<th>
+					Mobile
+				</th>
+				<th>
+					Email
+				</th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+			@foreach(var item in Model){
+				<tr>
+					<td>@item.Firstname</td>
+					<td>@item.Lastname</td>
+					<td>@item.CompanyName</td>
+					<td>@item.Mobile</td>
+					<td>@item.Email</td>
+					<td>
+						<a asp-controller="Contact" asp-action="UpdateContact" asp-route-contactId="@item.Id" class="btn btn-success"><i class="bi bi-pencil-square"></i></a>
+						<a asp-controller="Contact" asp-action="DeleteContact" asp-route-contactId="@item.Id" class="btn btn-danger"><i class="bi bi-trash-fill"></i></a>
+					</td>
+				</tr>
+			}
+		</tbody>
+    </table>
+
+</div>
